@@ -6,6 +6,15 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
+void help_menu(const char *const name)
+{
+    printf("Usage %s [options] [ <host name> <path to post data> <data>]\n",name);
+    printf("Options:\n");
+    printf("%s      Display this information\n","-h");
+    printf("%s      Send text\n","-t");
+}
+
+
 void addpost(char* str1, const char* data)
 {
     char postlength[128];
@@ -23,7 +32,8 @@ int main(int argc, const char *argv[])
 {
     if ((argc != 4))
     {
-        fprintf(stderr,"Usage %s <host name> <url> <text>\n",argv[0]);
+        help_menu(argv[0]);
+        //fprintf(stderr,"Usage %s <host name> <url> <text>\n",argv[0]);
         exit(EXIT_FAILURE);
     }
 
